@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <Meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration Form</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            padding: 20px;
+            width: 100%;
+        }
+
+        label {
+            color: #555;
+            display: block;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        input {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 16px;
+            padding: 10px;
+            width: 100%;
+        }
+
+        button {
+            background-color: #4caf50;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 12px 20px;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        small {
+            color: #777;
+            font-size: 12px;
+        }
+
+        .error-message {
+            color: #ff0000;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+    <form id="registrationForm" action="#" method="post" onsubmit="return validateForm()">
+        <h2 style="text-align: center; color: #333;">User Registration</h2>
+
+        <label for="firstName">First Name:</label>
+        <input type="txt" id="firstName" name="firstName" required>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[0-9]{10}" required>
+       
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required>
+        <small class="error-message" id="passwordMismatch"></small>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+            var passwordMismatchElement = document.getElementById('passwordMismatch');
+
+            if (password !== confirmPassword) {
+                passwordMismatchElement.textContent = "Password does not match. Please enter the same password in both fields.";
+                return false;
+            } else {
+                passwordMismatchElement.textContent = "";
+            }
+
+            // If the passwords match, the form will be submitted
+            return true;
+        }
+    </script>
+</body>
+</html>
